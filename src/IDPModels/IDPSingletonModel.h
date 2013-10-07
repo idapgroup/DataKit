@@ -8,6 +8,14 @@
 
 #import "IDPModel.h"
 
+/* You have to implement following method in your subclass:
+ 
+ + (dispatch_once_t *)onceToken {
+    static dispatch_once_t onceToken;
+    return &onceToken;
+ }
+ */
+
 @interface IDPSingletonModel : IDPModel
 
 + (id)sharedObject;

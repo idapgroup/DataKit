@@ -16,13 +16,18 @@ static id __sharedObject = nil;
 #pragma mark -
 #pragma mark Class methods
 
++ (dispatch_once_t *)onceToken {
+    NSAssert(NO, @"overridde me");
+    return NULL;
+}
+
 + (id)sharedObject {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    dispatch_once([self onceToken], ^{
         __sharedObject = [[self alloc] init];
     });
     return __sharedObject;
 }
+
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
