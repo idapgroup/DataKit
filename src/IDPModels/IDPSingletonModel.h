@@ -10,10 +10,19 @@
 
 /* You have to implement following method in your subclass:
  
- + (dispatch_once_t *)onceToken {
-    static dispatch_once_t onceToken;
-    return &onceToken;
+ + (id)__sharedObject {
+    return __yourUniqueIdentifier;
  }
+ 
+ + (id)sharedObject {
+    static dispatch_once_t __yourUniqueOnceToken;
+    dispatch_once(&__yourUniqueOnceToken, ^{
+    __yourUniqueIdentifier = [[self alloc] init];
+    });
+ 
+    return __yourUniqueIdentifier;
+ }
+ 
  */
 
 @interface IDPSingletonModel : IDPModel

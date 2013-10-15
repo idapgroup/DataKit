@@ -16,17 +16,16 @@ static id __sharedObject = nil;
 #pragma mark -
 #pragma mark Class methods
 
-+ (dispatch_once_t *)onceToken {
++ (id)__sharedObject {
     NSAssert(NO, @"overridde me");
     return NULL;
 }
 
 + (id)sharedObject {
-    dispatch_once([self onceToken], ^{
-        __sharedObject = [[self alloc] init];
-    });
-    return __sharedObject;
+    NSAssert(NO, @"overridde me");
+    return NULL;
 }
+
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -45,15 +44,15 @@ static id __sharedObject = nil;
 }
 
 + (id)allocWithZone:(NSZone *)zone {
-    static dispatch_once_t once;
+//    static dispatch_once_t once;
     
-    __block id result = __sharedObject;
+    __block id result = [self __sharedObject];
     
-    dispatch_once(&once, ^{
-        if (!__sharedObject) {
+//    dispatch_once(&once, ^{
+        if (![self __sharedObject]) {
             result = [super allocWithZone:zone];
         }
-    });
+//    });
     
     return result;
 }
