@@ -66,11 +66,4 @@ typedef enum {
 // default implementation does nothing
 - (void)cleanup;
 
-// model maintains weak links to its observers
-// you are responsible to remove yourself as an observer,
-// when you no longer need to observe the model state
-- (void)addObserver:(id <IDPModelObserver>)observer;
-- (void)removeObserver:(id <IDPModelObserver>)observer;
-- (BOOL)isObjectAnObserver:(id <IDPModelObserver>)observer;
-
 @end

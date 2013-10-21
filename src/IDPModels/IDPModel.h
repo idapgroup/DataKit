@@ -8,11 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+#import "IDPObservableObject.h"
 #import "IDPModelProtocol.h"
 
-@interface IDPModel : NSObject <IDPModel>
-
-@property (nonatomic, readonly)   id<IDPModel>    target;
+@interface IDPModel : IDPObservableObject <IDPModel>
 
 - (void)notifyObserversOfSuccessfulLoad;
 - (void)notifyObserversOfFailedLoad;

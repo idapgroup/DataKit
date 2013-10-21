@@ -8,6 +8,8 @@
 
 #import "IDPModelMixin.h"
 
+#import "NSObject+IDPExtensions.h"
+
 @interface IDPModelMixin ()
 @property (nonatomic, assign)   id<IDPModel> target;
 @end
