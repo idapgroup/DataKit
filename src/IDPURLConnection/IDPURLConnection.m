@@ -132,6 +132,7 @@ didReceiveResponse:(NSURLResponse *)response {
   didFailWithError:(NSError *)error
 {
     if (connection == self.connection) {
+        self.error = error;
         [self failLoading];
 	}
 }
