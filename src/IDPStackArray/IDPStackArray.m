@@ -28,7 +28,7 @@
     
     id<NSObject> object = (id<NSObject>)[self lastObject];
     [[object retain] autorelease];
-    [self lastObject];
+    [self removeLastObject];
     
     return object;
 }
