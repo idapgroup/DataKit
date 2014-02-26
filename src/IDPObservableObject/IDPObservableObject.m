@@ -88,4 +88,32 @@
     }
 }
 
+- (void)notifyObserversWithSelector:(SEL)selector userInfo:(id)info error:(id)error {
+    for (id<NSObject> observer in self.observers) {
+        if ([observer respondsToSelector:selector]) {
+            [observer performSelector:selector withObject:info withObject:error];
+        }
+    }
+}
+
+- (void)notifyObserversOnMainThreadWithSelector:(SEL)selector {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self notifyObserversWithSelector:selector];
+    });
+}
+
+- (void)notifyObserversOnMainThreadWithSelector:(SEL)selector userInfo:(id)info {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self notifyObserversWithSelector:selector userInfo:info];
+    });
+}
+
+- (void)notifyObserversOnMainThreadWithSelector:(SEL)selector
+                                       userInfo:(id)info
+                                          error:(id)error {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self notifyObserversWithSelector:selector userInfo:info error:error];
+    });
+}
+
 @end

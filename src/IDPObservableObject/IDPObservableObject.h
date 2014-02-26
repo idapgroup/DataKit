@@ -27,5 +27,13 @@
 // their selectors.
 - (void)notifyObserversWithSelector:(SEL)selector;
 - (void)notifyObserversWithSelector:(SEL)selector userInfo:(id)info;
+- (void)notifyObserversWithSelector:(SEL)selector
+                           userInfo:(id)info
+                              error:(id)error;
 
+- (void)notifyObserversOnMainThreadWithSelector:(SEL)selector;
+- (void)notifyObserversOnMainThreadWithSelector:(SEL)selector userInfo:(id)info;
+- (void)notifyObserversOnMainThreadWithSelector:(SEL)selector
+                                       userInfo:(id)info
+                                          error:(id)error;
 @end
