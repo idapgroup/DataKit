@@ -83,7 +83,7 @@
 - (void)notifyObserversWithSelector:(SEL)selector userInfo:(id)info {
     for (id<NSObject> observer in self.observers) {
         if ([observer respondsToSelector:selector]) {
-            [observer performSelector:selector withObject:info];
+            [observer performSelector:selector withObject:self withObject:info];
         }
     }
 }
