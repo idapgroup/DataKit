@@ -1,0 +1,8 @@
+platform :ios, '7.0'
+
+source 'https://github.com/idapgroup/Workflow.git'
+pod 'CommonKit', '0.1.1'
+
+target 'Tests' do
+  pod 'Kiwi', '~> 2.3'
+end
