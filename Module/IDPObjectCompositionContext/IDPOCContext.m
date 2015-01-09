@@ -37,7 +37,7 @@ static id IDPForwardingTargetForSelectorMixinMethod(id _self, SEL __cmd, SEL aSe
     
     IMP originalImplementation = implementation.forwardingInvocationForSelectorIMP;
 
-    return originalImplementation(_self, __cmd, aSelector);
+    return ((id (*)(id, SEL, SEL))(originalImplementation))(_self, __cmd, aSelector);
 }
 
 static BOOL IDPRespondsToSelectorMixinMethod(id _self, SEL __cmd, SEL aSelector) {
@@ -61,7 +61,7 @@ static BOOL IDPRespondsToSelectorMixinMethod(id _self, SEL __cmd, SEL aSelector)
     
     IMP originalImplementation = implementation.respondsToSelectorIMP;
     
-    return (BOOL)originalImplementation(_self, __cmd, aSelector);
+    return ((BOOL (*)(id, SEL, SEL))(originalImplementation))(_self, __cmd, aSelector);
 }
 
 @interface IDPOCContext ()
